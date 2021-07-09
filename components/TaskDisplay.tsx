@@ -3,6 +3,7 @@ import {View, Text, StyleSheet} from 'react-native';
 
 import Card from './Card';
 import Checkbox from '@react-native-community/checkbox';
+import TText from './TText';
 import Layout from '../styles/layout';
 
 const TaskDisplay = (props: any) => {
@@ -30,7 +31,7 @@ const TaskDisplay = (props: any) => {
         <Checkbox onValueChange={pressHandler} value={isDone} />
       </View>
 
-      <Text style={textStyle}>{props.item.text}</Text>
+      <TText style={textStyle}>{props.item.text}</TText>
     </Card>
   );
 };

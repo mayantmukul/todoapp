@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+import Layout from '../styles/layout';
 
 const Card = props => {
   return (
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     borderRadius: 4,
-    padding: 8,
+    padding: Layout.padding.default,
   },
 });
 

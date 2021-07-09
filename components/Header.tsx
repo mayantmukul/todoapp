@@ -1,5 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Platform} from 'react-native';
+import Layout from '../styles/layout';
+import TextStyle from '../styles/text';
 
 const Header = ({title}: {title: string}) => {
   return (
@@ -15,12 +17,20 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   text: {
-    marginTop: 56,
-    marginBottom: 24,
-    marginHorizontal: 24,
-    fontSize: 48,
-    fontWeight: 'bold',
+    marginTop: Layout.margin.xxlarge,
+    marginBottom: Layout.margin.mid,
+    marginHorizontal: Layout.margin.mid,
+    fontSize: TextStyle.fontSize.xxlarge,
     color: 'white',
+    ...Platform.select({
+      ios: {
+        fontFamily: TextStyle.font.default,
+        fontWeight: '900',
+      },
+      android: {
+        fontFamily: TextStyle.font.defaultBold,
+      },
+    }),
   },
 });
 
