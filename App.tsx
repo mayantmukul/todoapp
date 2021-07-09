@@ -26,20 +26,24 @@ const App = () => {
 
   const renderTaskItem = ({item}) => {
     return (
-      <TaskDisplay item={item} onPress={() => taskCompleteHandler(item)} />
+      <TaskDisplay
+        item={item}
+        onPress={value => taskChangeHandler(item, value)}
+      />
     );
   };
 
-  const taskCompleteHandler = (taskItem: any) => {
+  const taskChangeHandler = (taskItem: any, newDone: boolean) => {
     setTasks(currentTasks => {
       // Find the task with the same id
       const newTasks = currentTasks.filter(item => item.id !== taskItem.id);
 
-      // Mark that task as done
-      taskItem.done = true;
+      // Update the task's status
+      taskItem.done = newDone;
 
-      // Push the task to the end of the array
-      newTasks.push(taskItem);
+      // Push the task to the end of the array if done, push to top otherwise
+      if (newDone) newTasks.push(taskItem);
+      else newTasks.unshift(taskItem);
 
       // TODO: This makes all TaskDisplay in the list to re-render
       return newTasks;

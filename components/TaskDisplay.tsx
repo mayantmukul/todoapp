@@ -4,15 +4,12 @@ import {View, Text, StyleSheet} from 'react-native';
 import Checkbox from '@react-native-community/checkbox';
 import Layout from '../styles/layout';
 
-// TODO: Allow re-enabling a done task?
 const TaskDisplay = (props: any) => {
   // I don't need to maintain this is as a state in this component
   const isDone = props.item.done;
 
-  const pressHandler = () => {
-    if (!isDone) {
-      props.onPress();
-    }
+  const pressHandler = (value: boolean) => {
+    props.onPress(value);
   };
 
   /*
@@ -29,11 +26,7 @@ const TaskDisplay = (props: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.checkbox}>
-        <Checkbox
-          disabled={isDone}
-          onValueChange={pressHandler}
-          value={isDone}
-        />
+        <Checkbox onValueChange={pressHandler} value={isDone} />
       </View>
 
       <Text style={textStyle}>{props.item.text}</Text>
