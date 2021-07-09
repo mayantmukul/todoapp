@@ -9,6 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 
+import TaskDisplay from './components/TaskDisplay';
 import Header from './components/Header';
 import Layout from './styles/layout';
 
@@ -20,20 +21,31 @@ const task = {
 }
 */
 
-const renderTaskItem = ({item}) => {
-  return (
-    <View style={styles.taskItem}>
-      <Text>
-        #{item.id} - {item.text} | {item.done ? 'done' : 'not done'}
-      </Text>
-    </View>
-  );
-};
-
 const App = () => {
   const taskID = useRef(0);
   const [tasks, setTasks] = useState([] as any[]);
   const [taskText, setTaskText] = useState('');
+
+  const renderTaskItem = ({item}) => {
+    return (
+      <TaskDisplay item={item} onPress={() => taskCompleteHandler(item)} />
+    );
+  };
+
+  const taskCompleteHandler = (taskItem: any) => {
+    setTasks(currentTasks => {
+      // Find the task with the same id
+      const newTasks = currentTasks.filter(item => item.id !== taskItem.id);
+
+      // Mark that task as done
+      taskItem.done = true;
+
+      // Push the task to the end of the array
+      newTasks.push(taskItem);
+
+      return newTasks;
+    });
+  };
 
   const addTaskTextInputHandler = (changedText: string) => {
     setTaskText(changedText);
@@ -113,7 +125,6 @@ const styles = StyleSheet.create({
       flex: 1,
     },
   },
-  taskItem: Layout.default,
 });
 
 export default App;
