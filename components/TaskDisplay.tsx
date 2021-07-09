@@ -33,12 +33,6 @@ const TaskDisplay = (props: any) => {
       <Text style={textStyle}>{props.item.text}</Text>
     </Card>
   );
-
-  /*
-    <View style={styles.container}>
-      
-    </View>
-    */
 };
 
 const styles = StyleSheet.create({
@@ -46,19 +40,14 @@ const styles = StyleSheet.create({
     marginVertical: 4,
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  container: {
-    padding: Layout.padding.default,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-around',
   },
   checkbox: {
-    width: '20%',
     padding: Layout.padding.default,
   },
   text: {
-    width: '80%',
-    padding: Layout.padding.default,
+    width: '85%',
+    padding: Layout.padding.small,
   },
 });
 
