@@ -49,21 +49,18 @@ const AddTask = ({handler}) => {
 
 const styles = StyleSheet.create({
   container: {
-    ...Layout.default,
-    ...{
-      width: '100%',
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-    },
+    padding: Layout.padding.default,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
   input: {
     flex: 4,
   },
   button: {
-    ...Layout.default,
-    ...{
-      flex: 1,
-    },
+    flex: 1,
+    padding: Layout.padding.default,
   },
 });
 

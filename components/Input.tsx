@@ -11,7 +11,9 @@ const Input = (props: any) => {
 };
 
 const styles = StyleSheet.create({
-  input: Layout.default,
+  input: {
+    padding: Layout.padding.default,
+  },
 });
 
 export default Input;

@@ -48,23 +48,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    ...Layout.default,
-    ...{
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-    },
+    padding: Layout.padding.default,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   checkbox: {
-    ...Layout.default,
-    ...{
-      width: '20%',
-    },
+    width: '20%',
+    padding: Layout.padding.default,
   },
   text: {
-    ...Layout.default,
-    ...{
-      width: '80%',
-    },
+    width: '80%',
+    padding: Layout.padding.default,
   },
 });
 
