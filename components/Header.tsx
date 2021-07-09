@@ -1,8 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-import Layout from '../styles/layout';
-
 const Header = ({title}: {title: string}) => {
   return (
     <View style={styles.container}>
@@ -12,9 +10,17 @@ const Header = ({title}: {title: string}) => {
 };
 
 const styles = StyleSheet.create({
-  container: Layout.default,
+  container: {
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
   text: {
-    fontSize: 36,
+    marginTop: 56,
+    marginBottom: 24,
+    marginHorizontal: 24,
+    fontSize: 48,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
 

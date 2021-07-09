@@ -4,7 +4,9 @@ import {SafeAreaView, StyleSheet, View, FlatList} from 'react-native';
 import TaskDisplay from './components/TaskDisplay';
 import Header from './components/Header';
 import AddTask from './components/AddTask';
+import Card from './components/Card';
 import Layout from './styles/layout';
+import Colors from './styles/colors';
 
 /**
  * Schema for a task
@@ -52,9 +54,11 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.root}>
-      <Header title="Todo" />
+      <Header title="Tasks" />
       <View style={styles.content}>
-        <AddTask handler={addTaskHandler} />
+        <Card>
+          <AddTask handler={addTaskHandler} />
+        </Card>
 
         <View style={styles.listContainer}>
           <FlatList
@@ -73,6 +77,7 @@ const styles = StyleSheet.create({
     padding: 0,
     margin: 0,
     flex: 1,
+    backgroundColor: Colors.primary,
   },
   content: {
     ...Layout.default,
@@ -88,6 +93,9 @@ const styles = StyleSheet.create({
       alignItems: 'stretch',
       flex: 1,
       width: '100%',
+      borderRadius: 4,
+      margin: 4,
+      backgroundColor: Colors.background,
     },
   },
   listContentContainer: {

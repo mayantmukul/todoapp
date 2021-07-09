@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
+import Card from './Card';
 import Checkbox from '@react-native-community/checkbox';
 import Layout from '../styles/layout';
 
@@ -24,17 +25,28 @@ const TaskDisplay = (props: any) => {
   }
 
   return (
-    <View style={styles.container}>
+    <Card style={styles.card}>
       <View style={styles.checkbox}>
         <Checkbox onValueChange={pressHandler} value={isDone} />
       </View>
 
       <Text style={textStyle}>{props.item.text}</Text>
-    </View>
+    </Card>
   );
+
+  /*
+    <View style={styles.container}>
+      
+    </View>
+    */
 };
 
 const styles = StyleSheet.create({
+  card: {
+    marginVertical: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   container: {
     ...Layout.default,
     ...{
