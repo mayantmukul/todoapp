@@ -51,7 +51,14 @@ const App = () => {
       <Header title="Todo" />
       <View style={styles.content}>
         <AddTask handler={addTaskHandler} />
-        <FlatList data={tasks} renderItem={renderTaskItem} />
+
+        <View style={styles.listContainer}>
+          <FlatList
+            data={tasks}
+            renderItem={renderTaskItem}
+            contentContainerStyle={styles.listContentContainer}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -69,6 +76,18 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'flex-start',
     },
+  },
+  listContainer: {
+    ...Layout.default,
+    ...{
+      justifyContent: 'flex-start',
+      alignItems: 'stretch',
+      flex: 1,
+      width: '100%',
+    },
+  },
+  listContentContainer: {
+    flexGrow: 1,
   },
 });
 

@@ -50,10 +50,16 @@ const styles = StyleSheet.create({
     },
   },
   checkbox: {
-    margin: 8,
+    ...Layout.default,
+    ...{
+      width: '20%',
+    },
   },
   text: {
-    marginHorizontal: 8,
+    ...Layout.default,
+    ...{
+      width: '80%',
+    },
   },
 });
 
