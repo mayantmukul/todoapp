@@ -1,23 +1,60 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
+import Checkbox from '@react-native-community/checkbox';
 import Layout from '../styles/layout';
 
+// TODO: Allow re-enabling a done task?
 const TaskDisplay = (props: any) => {
+  // I don't need to maintain this is as a state in this component
+  const isDone = props.item.done;
+
+  const pressHandler = () => {
+    if (!isDone) {
+      props.onPress();
+    }
+  };
+
+  /*
+  useEffect(() => {
+    console.log('rerendering task display again');
+  });
+  */
+
+  let textStyle = styles.text;
+  if (isDone) {
+    textStyle = {...styles.text, ...{textDecorationLine: 'line-through'}};
+  }
+
   return (
-    <TouchableOpacity {...props} onPress={props.onPress}>
-      <View style={styles.container}>
-        <Text>
-          #{props.item.id} - {props.item.text} |{' '}
-          {props.item.done ? 'done' : 'not done'}
-        </Text>
+    <View style={styles.container}>
+      <View style={styles.checkbox}>
+        <Checkbox
+          disabled={isDone}
+          onValueChange={pressHandler}
+          value={isDone}
+        />
       </View>
-    </TouchableOpacity>
+
+      <Text style={textStyle}>{props.item.text}</Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: Layout.default,
+  container: {
+    ...Layout.default,
+    ...{
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+    },
+  },
+  checkbox: {
+    margin: 8,
+  },
+  text: {
+    marginHorizontal: 8,
+  },
 });
 
 export default TaskDisplay;

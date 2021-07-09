@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, Text, View, FlatList} from 'react-native';
+import {SafeAreaView, StyleSheet, View, FlatList} from 'react-native';
 
 import TaskDisplay from './components/TaskDisplay';
 import Header from './components/Header';
@@ -41,6 +41,7 @@ const App = () => {
       // Push the task to the end of the array
       newTasks.push(taskItem);
 
+      // TODO: This makes all TaskDisplay in the list to re-render
       return newTasks;
     });
   };
