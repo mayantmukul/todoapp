@@ -56,9 +56,7 @@ const App = () => {
     <SafeAreaView style={styles.root}>
       <Header title="Tasks" />
       <View style={styles.content}>
-        <Card>
-          <AddTask handler={addTaskHandler} />
-        </Card>
+        <AddTask handler={addTaskHandler} />
 
         <View style={styles.listContainer}>
           <FlatList

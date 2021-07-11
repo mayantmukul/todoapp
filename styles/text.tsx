@@ -5,7 +5,7 @@ const TextStyle = {
   },
   fontSize: {
     xxlarge: 64,
-    default: 16,
+    default: 18,
   },
 };
 

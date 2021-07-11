@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
+import Colors from '../styles/colors';
 
 import TextStyle from '../styles/text';
 
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: TextStyle.font.default,
     fontSize: TextStyle.fontSize.default,
+    color: Colors.textMain,
   },
 });
 

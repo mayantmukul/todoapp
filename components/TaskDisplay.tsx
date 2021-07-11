@@ -5,6 +5,7 @@ import Card from './Card';
 import Checkbox from '@react-native-community/checkbox';
 import TText from './TText';
 import Layout from '../styles/layout';
+import Colors from '../styles/colors';
 
 const TaskDisplay = (props: any) => {
   // I don't need to maintain this is as a state in this component
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
+    backgroundColor: Colors.textBg,
   },
   checkbox: {
     padding: Layout.padding.default,
