@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import Card from './Card';
 import Checkbox from '@react-native-community/checkbox';
@@ -23,7 +23,13 @@ const TaskDisplay = (props: any) => {
 
   let textStyle = styles.text;
   if (isDone) {
-    textStyle = {...styles.text, ...{textDecorationLine: 'line-through'}};
+    textStyle = {
+      ...styles.text,
+      ...{
+        textDecorationLine: 'line-through',
+        color: Colors.textMuted,
+      },
+    };
   }
 
   return (
