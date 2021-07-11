@@ -9,6 +9,7 @@ A simple todo list app with React Native
 1. Completed tasks can be marked again as undone, moving them to the top
 1. Completed tasks have a strikethrough and a lighter color
 1. Dark theme (caveat: set in code for now with `isDark` in `styles/colors.tsx`, no toggle given to the user)
+1. **Easter Egg:** Try adding a task of the form `anime: <search term>` to search for it on [MyAnimeList](https://myanimelist.net/).
 
 ## Screenshots
 

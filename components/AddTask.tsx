@@ -1,7 +1,6 @@
-import React, {useState, useRef} from 'react';
-import {View, Button, StyleSheet, Alert} from 'react-native';
+import React, {useState, useRef, useCallback} from 'react';
+import {View, Button, StyleSheet, Alert, Linking} from 'react-native';
 
-import Icon from 'react-native-vector-icons/AntDesign';
 import Card from './Card';
 import Input from './Input';
 import Layout from '../styles/layout';
@@ -15,7 +14,25 @@ const AddTask = ({handler}) => {
     setTaskText(changedText);
   };
 
+  const animeSearchHandler = useCallback(async () => {
+    const anime = taskText
+      .toLowerCase()
+      .replace(/anime: */g, '')
+      .replace(' ', '%20');
+    const url = 'https://myanimelist.net/search/all?q=' + anime;
+    await Linking.openURL(url);
+  }, [taskText]);
+
   const addTaskButtonHandler = () => {
+    const addTaskHelper = () => {
+      setTaskText('');
+      handler({
+        id: taskID.current++,
+        text: taskText,
+        done: false,
+      });
+    };
+
     if (!taskText) {
       Alert.alert('Cannot add an empty task', '', [
         {
@@ -27,12 +44,23 @@ const AddTask = ({handler}) => {
       return;
     }
 
-    setTaskText('');
-    handler({
-      id: taskID.current++,
-      text: taskText,
-      done: false,
-    });
+    if (taskText.toLowerCase().startsWith('anime:')) {
+      Alert.alert('Search MyAnimeList first?', '', [
+        {
+          text: 'YES',
+          style: 'default',
+          onPress: animeSearchHandler,
+        },
+        {
+          text: 'NO',
+          style: 'default',
+          onPress: addTaskHelper,
+        },
+      ]);
+      return;
+    }
+
+    addTaskHelper();
   };
 
   return (
